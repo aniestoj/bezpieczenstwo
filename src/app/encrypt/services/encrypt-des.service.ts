@@ -109,12 +109,12 @@ export class EncryptDesService {
 
   encode(value, key) {
     const res = this.encrypt(this.strToBin(value), this.desKeysService.generateKeys(this.strToBin(key)))
-    return this.binToStr(res);
+    return value.length === 8 ? this.binToStr(res) : value;
   }
 
   decode(value, key) {
     const res = this.encrypt(this.strToBin(value), this.reverse(this.desKeysService.generateKeys(this.strToBin(key))))
-    return this.binToStr(res);
+    return value.length === 8 ? this.binToStr(res) : value;
   }
 
   private strToBin(str: string) {
