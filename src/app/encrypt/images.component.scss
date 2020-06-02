@@ -1,0 +1,11 @@
+.images {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-column-gap: 20px;
+  justify-self: center;
+}
+
+.secret {
+  display: grid;
+  justify-content: center;
+}

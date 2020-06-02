@@ -1,0 +1,19 @@
+<div class="actions">
+  <button class="button" color="primary" mat-raised-button (click)="encryptDES()" [disabled]="(isProcessing$ | async) || !(fileToEncrypt$ | async)">
+    <span>{{'Encrypt DES'}}</span>
+    <mat-icon>double_arrow</mat-icon>
+  </button>
+  <button class="button" color="primary" mat-raised-button (click)="encryptSDES()" [disabled]="(isProcessing$ | async) || !(fileToEncrypt$ | async)">
+    <span>{{'Encrypt SDES'}}</span>
+    <mat-icon>double_arrow</mat-icon>
+  </button>
+
+  <button class="button" color="accent" mat-raised-button (click)="decryptDES()" [disabled]="(isProcessing$ | async) || !(fileToDecrypt$ | async)">
+    <mat-icon class="icon">double_arrow</mat-icon>
+    <span>{{'Decrypt DES'}}</span>
+  </button>
+  <button class="button" color="accent" mat-raised-button (click)="decryptSDES()" [disabled]="(isProcessing$ | async) || !(fileToDecrypt$ | async)">
+    <mat-icon class="icon">double_arrow</mat-icon>
+    <span>{{'Decrypt SDES'}}</span>
+  </button>
+</div>

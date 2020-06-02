@@ -1,0 +1,73 @@
+.button {
+  height: 40px;
+  width: 240px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+
+  &--primary {
+    background: #3D5AFF;
+    color: #ffffff;
+    border: none;
+
+    &:hover {
+      background: darken(#3D5AFF, 20%);
+    }
+  }
+
+  &--secondary {
+    background: none;
+    color: #3D5AFF;
+    border: 1px solid rgba(101, 114, 143, 0.2);
+
+    &:hover {
+      background: #eeeeee;
+    }
+  }
+
+  &--ternary {
+    background: none;
+    color: #1ecd97;
+    border: 2px solid #1ecd97;
+    width: auto;
+    border-radius: 40px;
+    min-width: 100px;
+    text-transform: none;
+    transition: background-color .3s cubic-bezier(0, 0, 0, 0), color .3s cubic-bezier(0, 0, 0, 0), width .3s cubic-bezier(0, 0, 0, 0), border-width .3s cubic-bezier(0, 0, 0, 0), border-color .3s cubic-bezier(0, 0, 0, 0);
+
+
+    &:hover {
+      color: #ffffff;
+      background: #1ecd97;
+    }
+  }
+}
+
+.button {
+  &--with-icon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(101, 114, 143, 0.2);
+    color: #65728F;
+    border-radius: 50%;
+    padding: 0;
+
+    &:hover {
+      border: 1px solid rgba(101, 114, 143, 0.4);
+      color: #65728F;
+    }
+
+    .mat-icon {
+      font-size: 16px !important;
+      transform: rotate(180deg);
+      height: 17px !important;
+    }
+  }
+}

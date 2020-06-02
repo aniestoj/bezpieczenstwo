@@ -1,0 +1,24 @@
+<div class="menu">
+  <input #file
+         (change)="onChange(file.files[0])"
+         class="file-input"
+         accept="image/x-png,image/jpeg"
+         name="file"
+         style="display: none"
+         type="file"/>
+  <div>
+    <button (click)="file.click()" mat-raised-button color="primary">
+      <span>{{'Wybierz plik (PNG, JPG)'}}</span>
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <button (click)="save()" [disabled]="!(fileToDecrypt$ | async)" mat-raised-button>
+    <span>{{'Save'}}</span>
+    <mat-icon>save</mat-icon>
+  </button>
+  <button (click)="remove()" [disabled]="!(fileToDecrypt$ | async)" mat-raised-button color="warn">
+    <span>{{'Remove'}}</span>
+    <mat-icon>clear</mat-icon>
+  </button>
+</div>

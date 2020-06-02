@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./assets/styles/reset";
+@import "./assets/styles/colors";
+@import "./assets/styles/typography";
+@import "./assets/styles/fonts";
+@import "./assets/styles/buttons";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  @include text-font-size('regular');
+  font-family: map-get($font-family, 'primary');
+  color: map-get($color-base, 'grey-1');
+  font-weight: map-get($font-weight, 'light');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+//chrome autocomplete input color
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+//chrome autocomplete default font
+input:-webkit-autofill::first-line {
+  font-size: 16px !important;
+}
+
+.upload-dialog .mat-dialog-container {
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
