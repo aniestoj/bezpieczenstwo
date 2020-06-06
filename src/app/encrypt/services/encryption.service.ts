@@ -61,7 +61,7 @@ export class EncryptionService {
 
   private bmp(file: string | ArrayBuffer, type: EncryptionType, algorithmType: AlgorithmType, secret: string) {
     const stringData = file.toString();
-    const dataParts = [stringData.substr(0, 1024), stringData.substr(1024, stringData.length)];
+    const dataParts = [stringData.substr(0, 432), stringData.substr(432, stringData.length)];
     const idats = dataParts.slice(1, dataParts.length);
     const data = idats
       .map((value, index) => (type === EncryptionType.ENCRYPTION)
