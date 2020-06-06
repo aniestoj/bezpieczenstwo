@@ -3,12 +3,12 @@
          (change)="onChange(file.files[0])"
          class="file-input"
          name="file"
-         accept="image/x-png,image/jpeg"
+         accept="image/x-png,image/jpeg,image/bmp"
          style="display: none"
          type="file"/>
   <div>
     <button (click)="file.click()" mat-raised-button color="primary">
-      <span>{{'Wybierz plik (PNG, JPG)'}}</span>
+      <span>{{'Wybierz plik (PNG, JPG, BMP)'}}</span>
       <mat-icon>add</mat-icon>
     </button>
   </div>

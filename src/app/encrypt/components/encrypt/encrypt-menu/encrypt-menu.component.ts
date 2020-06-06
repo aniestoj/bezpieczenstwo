@@ -24,7 +24,7 @@ export class EncryptMenuComponent {
 
   onChange(file: File) {
     if (file) {
-      if (this.fileFormat(file) === 'png' || this.fileFormat(file) === 'jpg' || this.fileFormat(file) === 'jpeg') {
+      if (this.fileFormat(file) === 'png' || this.fileFormat(file) === 'jpg' || this.fileFormat(file) === 'jpeg' || this.fileFormat(file) === 'bmp') {
         this.store$.dispatch(newFileToEncryptSelected({file}))
       } else {
         this.snackbarService.open('Wrong file format!')

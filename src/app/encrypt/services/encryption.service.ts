@@ -16,10 +16,13 @@ export class EncryptionService {
   encryption(file: string | ArrayBuffer, type: EncryptionType, algorithmType: AlgorithmType, secret: string) {
     let fileData = '';
     if (file.toString().includes('IDAT')) {
-      console.log(type + ' ' + algorithmType + 'PNG')
+      console.log(type + ' ' + algorithmType + ' PNG')
       fileData = this.idat(file, type, algorithmType, secret);
+    } else if (file.toString().includes('BM8')) {
+      console.log(type + ' ' + algorithmType + ' BMP')
+      fileData = this.bmp(file, type, algorithmType, secret);
     } else {
-      console.log(type + ' ' + algorithmType + 'JPEG')
+      console.log(type + ' ' + algorithmType + ' JPEG')
       fileData = this.ifif(file, type, algorithmType, secret);
     }
     const bytes = new Uint8Array(fileData.length);
@@ -44,9 +47,21 @@ export class EncryptionService {
   }
 
   private ifif(file: string | ArrayBuffer, type: EncryptionType, algorithmType: AlgorithmType, secret: string) {
-    const regexp = /ÿÐ/gi;
     const stringData = file.toString();
-    const dataParts = [stringData.substr(0, 1000), stringData.substr(1000, stringData.length)];
+    const dataParts = [stringData.substr(0, 512), stringData.substr(512, stringData.length)];
+    const idats = dataParts.slice(1, dataParts.length);
+    const data = idats
+      .map((value, index) => (type === EncryptionType.ENCRYPTION)
+        ? algorithmType === AlgorithmType.DES ? this.encryptDES(value, secret) : this.encryptSDES(value, secret)
+        : algorithmType === AlgorithmType.DES ? this.decryptDES(value, secret) : this.decryptSDES(value, secret)
+      ).reduce((accumulator, current) => accumulator + current, '')
+
+    return dataParts[0] + data;
+  }
+
+  private bmp(file: string | ArrayBuffer, type: EncryptionType, algorithmType: AlgorithmType, secret: string) {
+    const stringData = file.toString();
+    const dataParts = [stringData.substr(0, 1024), stringData.substr(1024, stringData.length)];
     const idats = dataParts.slice(1, dataParts.length);
     const data = idats
       .map((value, index) => (type === EncryptionType.ENCRYPTION)

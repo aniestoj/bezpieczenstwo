@@ -23,7 +23,7 @@ export class DecryptMenuComponent {
 
   onChange(file: File) {
     if (file) {
-      if (this.fileFormat(file) === 'png' || this.fileFormat(file) === 'jpg' || this.fileFormat(file) === 'jpeg') {
+      if (this.fileFormat(file) === 'png' || this.fileFormat(file) === 'jpg' || this.fileFormat(file) === 'jpeg' || this.fileFormat(file) === 'bmp') {
         this.store$.dispatch(newFileToDecryptSelected({file}))
       } else {
         this.snackbarService.open('Wrong file format!')
